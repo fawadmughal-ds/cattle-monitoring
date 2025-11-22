@@ -51,4 +51,20 @@ html.dark body {
   .fade-in-up {
     animation: fadeInUp 0.6s ease-out;
   }
+  
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  input, button, a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
 }

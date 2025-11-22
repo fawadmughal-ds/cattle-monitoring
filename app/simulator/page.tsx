@@ -37,7 +37,7 @@ export default function SimulatorPage() {
     };
     return (
       <span
-        className={`px-6 py-3 rounded-full text-base font-semibold ${
+        className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-semibold ${
           styles[status as keyof typeof styles] || styles.normal
         }`}
       >
@@ -47,24 +47,24 @@ export default function SimulatorPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Anomaly Simulator</h1>
-        <p className="text-gray-600 dark:text-gray-400">Test predictions with custom parameters</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">Anomaly Simulator</h1>
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Test predictions with custom parameters</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Input Section */}
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Simulation Parameters</h2>
+        <div className="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">Simulation Parameters</h2>
 
           {/* Body Temperature */}
-          <div className="mb-6">
-            <div className="flex items-center justify-between mb-3">
+          <div className="mb-4 sm:mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Body Temperature
               </label>
-              <span className="text-xl font-bold text-primary-600 dark:text-primary-400">
+              <span className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400">
                 {inputs.body_temperature.toFixed(2)}°C
               </span>
             </div>
@@ -77,7 +77,7 @@ export default function SimulatorPage() {
               onChange={(e) =>
                 setInputs({ ...inputs, body_temperature: parseFloat(e.target.value) })
               }
-              className="w-full h-2 bg-gray-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary-600"
+              className="w-full h-3 sm:h-2 bg-gray-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600 touch-manipulation"
             />
             <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
               <span>35°C</span>
@@ -86,12 +86,12 @@ export default function SimulatorPage() {
           </div>
 
           {/* IMU Variance */}
-          <div className="mb-6">
-            <div className="flex items-center justify-between mb-3">
+          <div className="mb-4 sm:mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 IMU Movement Variance
               </label>
-              <span className="text-xl font-bold text-warning-600 dark:text-warning-400">
+              <span className="text-lg sm:text-xl font-bold text-yellow-600 dark:text-yellow-400">
                 {inputs.imu_variance.toFixed(2)}
               </span>
             </div>
@@ -104,7 +104,7 @@ export default function SimulatorPage() {
               onChange={(e) =>
                 setInputs({ ...inputs, imu_variance: parseFloat(e.target.value) })
               }
-              className="w-full h-2 bg-gray-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-warning-600"
+              className="w-full h-3 sm:h-2 bg-gray-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-yellow-600 touch-manipulation"
             />
             <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
               <span>0 (Low)</span>
@@ -113,12 +113,12 @@ export default function SimulatorPage() {
           </div>
 
           {/* THI */}
-          <div className="mb-6">
-            <div className="flex items-center justify-between mb-3">
+          <div className="mb-4 sm:mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 THI (Temperature-Humidity Index)
               </label>
-              <span className="text-xl font-bold text-success-600 dark:text-success-400">
+              <span className="text-lg sm:text-xl font-bold text-green-600 dark:text-green-400">
                 {inputs.thi.toFixed(1)}
               </span>
             </div>
@@ -131,7 +131,7 @@ export default function SimulatorPage() {
               onChange={(e) =>
                 setInputs({ ...inputs, thi: parseFloat(e.target.value) })
               }
-              className="w-full h-2 bg-gray-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-success-600"
+              className="w-full h-3 sm:h-2 bg-gray-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-green-600 touch-manipulation"
             />
             <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
               <span>60</span>
@@ -142,18 +142,18 @@ export default function SimulatorPage() {
           <button
             onClick={handleSimulate}
             disabled={loading}
-            className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-all duration-200 font-semibold text-lg"
+            className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-all duration-200 font-semibold text-base sm:text-lg touch-manipulation"
           >
             {loading ? 'Running Simulation...' : 'Run Simulation'}
           </button>
         </div>
 
         {/* Results Section */}
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Simulation Results</h2>
+        <div className="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">Simulation Results</h2>
 
           {error && (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg mb-4">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg mb-4 text-sm">
               <div className="flex items-center">
                 <span className="text-xl mr-2">⚠️</span>
                 <span className="font-semibold">{error}</span>
@@ -162,25 +162,25 @@ export default function SimulatorPage() {
           )}
 
           {!result && !loading && (
-            <div className="text-center text-gray-500 dark:text-gray-400 py-12">
-              <div className="text-5xl mb-4 opacity-50">🔬</div>
-              <div>Adjust parameters and click "Run Simulation" to see predictions</div>
+            <div className="text-center text-gray-500 dark:text-gray-400 py-8 sm:py-12">
+              <div className="text-4xl sm:text-5xl mb-4 opacity-50">🔬</div>
+              <div className="text-sm sm:text-base">Adjust parameters and click "Run Simulation" to see predictions</div>
             </div>
           )}
 
           {loading && (
-            <div className="text-center text-gray-500 dark:text-gray-400 py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mb-4"></div>
-              <div>Processing...</div>
+            <div className="text-center text-gray-500 dark:text-gray-400 py-8 sm:py-12">
+              <div className="inline-block animate-spin rounded-full h-10 sm:h-12 w-10 sm:w-12 border-b-2 border-blue-600 mb-4"></div>
+              <div className="text-sm sm:text-base">Processing...</div>
             </div>
           )}
 
           {result && (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {/* Anomaly Score */}
-              <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg border border-purple-200 dark:border-purple-800">
-                <div className="text-sm text-gray-600 dark:text-gray-400 font-medium mb-2">Anomaly Score</div>
-                <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-3">
+              <div className="bg-purple-50 dark:bg-purple-900/20 p-4 sm:p-6 rounded-lg border border-purple-200 dark:border-purple-800">
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-2">Anomaly Score</div>
+                <div className="text-3xl sm:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-3">
                   {result.anomaly_score.toFixed(3)}
                 </div>
                 <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-3">
@@ -198,17 +198,17 @@ export default function SimulatorPage() {
               </div>
 
               {/* Status */}
-              <div className="bg-gray-50 dark:bg-slate-700/50 p-6 rounded-lg">
-                <div className="text-sm text-gray-600 dark:text-gray-400 font-medium mb-3">Status</div>
+              <div className="bg-gray-50 dark:bg-slate-700/50 p-4 sm:p-6 rounded-lg">
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-3">Status</div>
                 <div className="flex justify-center">
                   {getStatusBadge(result.status)}
                 </div>
               </div>
 
               {/* Explanation */}
-              <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-800">
-                <div className="text-sm text-gray-600 dark:text-gray-400 font-medium mb-3">AI Explanation</div>
-                <div className="p-4 bg-white dark:bg-slate-800 rounded-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <div className="bg-blue-50 dark:bg-blue-900/20 p-4 sm:p-6 rounded-lg border border-blue-200 dark:border-blue-800">
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-3">AI Explanation</div>
+                <div className="p-3 sm:p-4 bg-white dark:bg-slate-800 rounded-lg text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
                   {result.explanation || 'No explanation available.'}
                 </div>
               </div>

@@ -55,7 +55,7 @@ export default function Dashboard() {
     };
     return (
       <span
-        className={`px-4 py-1.5 rounded-full text-xs font-semibold ${
+        className={`px-3 py-1 rounded-full text-xs font-semibold ${
           styles[status as keyof typeof styles] || styles.normal
         }`}
       >
@@ -65,26 +65,26 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            Smart Cattle Monitoring Dashboard
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            Smart Cattle Monitoring
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">Real-time AI-powered health monitoring</p>
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Real-time AI-powered health monitoring</p>
         </div>
         <button
           onClick={fetchData}
           disabled={loading}
-          className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-all duration-200 font-semibold"
+          className="px-4 py-2.5 sm:px-6 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-all duration-200 font-semibold text-sm sm:text-base touch-manipulation"
         >
           {loading ? (
-            <span className="flex items-center">
+            <span className="flex items-center justify-center">
               <span className="animate-spin mr-2">⚙️</span> Loading...
             </span>
           ) : (
-            <span className="flex items-center">
+            <span className="flex items-center justify-center">
               <span className="mr-2">🔄</span> Refresh
             </span>
           )}
@@ -92,7 +92,7 @@ export default function Dashboard() {
       </div>
 
       {error && (
-        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg text-sm">
           <div className="flex items-center">
             <span className="text-xl mr-2">⚠️</span>
             <span className="font-semibold">{error}</span>
@@ -101,62 +101,62 @@ export default function Dashboard() {
       )}
 
       {/* Statistics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700 card-hover">
-          <div className="flex items-center justify-between mb-4">
-            <div className="text-3xl">🐄</div>
-            <div className="w-12 h-12 rounded-lg bg-purple-600 flex items-center justify-center text-white font-bold text-lg">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+        <div className="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700 card-hover">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <div className="text-2xl sm:text-3xl">🐄</div>
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-purple-600 flex items-center justify-center text-white font-bold text-base sm:text-lg">
               {stats.total}
             </div>
           </div>
-          <div className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">Total Cows</div>
-          <div className="text-3xl font-bold text-gray-900 dark:text-white">{stats.total}</div>
+          <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">Total Cows</div>
+          <div className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{stats.total}</div>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700 card-hover">
-          <div className="flex items-center justify-between mb-4">
-            <div className="text-3xl">✅</div>
-            <div className="w-12 h-12 rounded-lg bg-green-600 flex items-center justify-center text-white font-bold text-lg">
+        <div className="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700 card-hover">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <div className="text-2xl sm:text-3xl">✅</div>
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-green-600 flex items-center justify-center text-white font-bold text-base sm:text-lg">
               {stats.normal}
             </div>
           </div>
-          <div className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">Normal Cows</div>
-          <div className="text-3xl font-bold text-green-600 dark:text-green-400">{stats.normal}</div>
+          <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">Normal Cows</div>
+          <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400">{stats.normal}</div>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700 card-hover">
-          <div className="flex items-center justify-between mb-4">
-            <div className="text-3xl">⚠️</div>
-            <div className="w-12 h-12 rounded-lg bg-yellow-600 flex items-center justify-center text-white font-bold text-lg">
+        <div className="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700 card-hover">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <div className="text-2xl sm:text-3xl">⚠️</div>
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-yellow-600 flex items-center justify-center text-white font-bold text-base sm:text-lg">
               {stats.warning}
             </div>
           </div>
-          <div className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">Warning Cows</div>
-          <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400">{stats.warning}</div>
+          <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">Warning Cows</div>
+          <div className="text-2xl sm:text-3xl font-bold text-yellow-600 dark:text-yellow-400">{stats.warning}</div>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700 card-hover">
-          <div className="flex items-center justify-between mb-4">
-            <div className="text-3xl">🚨</div>
-            <div className="w-12 h-12 rounded-lg bg-red-600 flex items-center justify-center text-white font-bold text-lg">
+        <div className="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700 card-hover">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <div className="text-2xl sm:text-3xl">🚨</div>
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-red-600 flex items-center justify-center text-white font-bold text-base sm:text-lg">
               {stats.highRisk}
             </div>
           </div>
-          <div className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">High-Risk Cows</div>
-          <div className="text-3xl font-bold text-red-600 dark:text-red-400">{stats.highRisk}</div>
+          <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">High-Risk Cows</div>
+          <div className="text-2xl sm:text-3xl font-bold text-red-600 dark:text-red-400">{stats.highRisk}</div>
         </div>
       </div>
 
       {/* THI Indicator */}
-      <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+      <div className="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-xl shadow-md border border-gray-200 dark:border-slate-700">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-4">
           Temperature-Humidity Index (THI)
         </h2>
-        <div className="flex items-center space-x-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 gap-4">
           <div className="flex-1">
             <div className="flex justify-between mb-3">
-              <span className="text-sm text-gray-600 dark:text-gray-400 font-medium">Average THI</span>
-              <span className={`text-2xl font-bold ${thiStatus.color}`}>
+              <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium">Average THI</span>
+              <span className={`text-xl sm:text-2xl font-bold ${thiStatus.color}`}>
                 {avgTHI.toFixed(1)}
               </span>
             </div>
@@ -167,7 +167,7 @@ export default function Dashboard() {
               />
             </div>
           </div>
-          <div className={`px-6 py-3 rounded-lg ${thiStatus.bg} text-white font-semibold`}>
+          <div className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg ${thiStatus.bg} text-white font-semibold text-sm sm:text-base text-center sm:text-left`}>
             {thiStatus.label}
           </div>
         </div>
@@ -175,61 +175,65 @@ export default function Dashboard() {
 
       {/* Cows Table */}
       <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md border border-gray-200 dark:border-slate-700 overflow-hidden">
-        <div className="p-6 border-b border-gray-200 dark:border-slate-700">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">All Cattle</h2>
+        <div className="p-4 sm:p-6 border-b border-gray-200 dark:border-slate-700">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">All Cattle</h2>
         </div>
         {loading ? (
-          <div className="p-12 text-center">
-            <div className="inline-block animate-spin text-4xl mb-4">⚙️</div>
-            <div className="text-gray-600 dark:text-gray-400 font-medium">Loading cattle data...</div>
+          <div className="p-8 sm:p-12 text-center">
+            <div className="inline-block animate-spin text-3xl sm:text-4xl mb-4">⚙️</div>
+            <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium">Loading cattle data...</div>
           </div>
         ) : cows.length === 0 ? (
-          <div className="p-12 text-center">
-            <div className="text-5xl mb-4">🐄</div>
-            <div className="text-gray-600 dark:text-gray-400 font-medium">No cattle data available</div>
+          <div className="p-8 sm:p-12 text-center">
+            <div className="text-4xl sm:text-5xl mb-4">🐄</div>
+            <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium">No cattle data available</div>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50 dark:bg-slate-900">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Cow ID</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Temperature (°C)</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Anomaly Score</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Action</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-slate-700">
-                {cows.map((cow) => (
-                  <tr key={cow.id} className="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <span className="text-lg mr-2">🐄</span>
-                        <span className="text-sm font-medium text-gray-900 dark:text-white">{cow.id}</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
-                      {cow.temperature.toFixed(2)}°C
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
-                      {cow.anomaly_score.toFixed(3)}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {getStatusBadge(cow.status)}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <Link
-                        href={`/cow-details?id=${cow.id}`}
-                        className="text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium text-sm"
-                      >
-                        View Details →
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <div className="inline-block min-w-full align-middle">
+              <div className="overflow-hidden">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-slate-700">
+                  <thead className="bg-gray-50 dark:bg-slate-900">
+                    <tr>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Cow ID</th>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Temp</th>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Score</th>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Status</th>
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white dark:bg-slate-800 divide-y divide-gray-200 dark:divide-slate-700">
+                    {cows.map((cow) => (
+                      <tr key={cow.id} className="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors">
+                        <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <span className="text-base sm:text-lg mr-2">🐄</span>
+                            <span className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white">{cow.id}</span>
+                          </div>
+                        </td>
+                        <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-700 dark:text-gray-300">
+                          {cow.temperature.toFixed(2)}°C
+                        </td>
+                        <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-700 dark:text-gray-300">
+                          {cow.anomaly_score.toFixed(3)}
+                        </td>
+                        <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                          {getStatusBadge(cow.status)}
+                        </td>
+                        <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
+                          <Link
+                            href={`/cow-details?id=${cow.id}`}
+                            className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-xs sm:text-sm touch-manipulation"
+                          >
+                            View →
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         )}
       </div>
